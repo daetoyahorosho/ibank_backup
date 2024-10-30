@@ -6,7 +6,7 @@ public class Restore {
 
     public static void pgRestoreDb() {
 
-        Config config = new Config("src/main/resources/config.properties");
+        Config config = new Config("classes/config.properties");
 
         // Настраиваем ProcessBuilder для выполнения команды
         ProcessBuilder processBuilder = new ProcessBuilder(config.getPathPgRestore(),

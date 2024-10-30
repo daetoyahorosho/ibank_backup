@@ -13,12 +13,12 @@ public class FolderTransfer {
     private static final String SECOND_QUESTIONS = "Backup сервера ibank находится по данному пути: ";
     private static final String MESSAGE_WARNING = "ВАЖНО! Сервер Pegasus должен находиться в корне папки ibank, так как приложение переносит только папку ibank. \n" +
             "Некорректно настроенный config.properties может привести к необратимым последствиям.";
-    private static final String MESSAGE_TO_CONTINUE = "Вы хотите продолжить? (да/нет): ";
+    private static final String MESSAGE_TO_CONTINUE = "Вы хотите продолжить? (yes/no): ";
     private static final String SKIP_LINE = "*********************************************************************************************";
 
     public static void systemMessage() {
 
-        Config config = new Config("src/main/resources/config.properties");
+        Config config = new Config("classes/config.properties");
 
         // Вывод информации о работе, а также о расположении сервера и бэкапа
         System.out.println(MESSAGE_WARNING);

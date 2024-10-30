@@ -9,7 +9,7 @@ public class Start {
     public static void main(String[] args) {
 
         // Создание экземпляра класса Config для чтения переменных
-        Config config = new Config("src/main/resources/config.properties");
+        Config config = new Config("classes/config.properties");
 
         //Начало работы программы
         try (Scanner scanner = new Scanner(System.in)) {
@@ -20,7 +20,7 @@ public class Start {
 
             String userInput = scanner.nextLine();
 
-            if (userInput.equalsIgnoreCase("Да")) {
+            if (userInput.equalsIgnoreCase("Yes")) {
 
                 // Удаление схемы БД PostgreSQL
                 try {
