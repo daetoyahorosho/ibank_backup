@@ -1,8 +1,5 @@
 package org.example;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Delete {
 
@@ -16,10 +13,24 @@ public class Delete {
 
             System.out.println("Подключение установлено!");
 
-            String deleteSchemeCascade = "DROP SCHEMA IF EXISTS " + config.getDbSchema() + " CASCADE";
-            stmt.executeUpdate(deleteSchemeCascade);
+            // Проверка, существует ли схема
+            String checkSchemaExists = "SELECT schema_name FROM information_schema.schemata WHERE schema_name = '" + config.getDbSchema() + "'";
+            ResultSet resultSet = stmt.executeQuery(checkSchemaExists);
 
-            System.out.println("Схема " + config.getDbSchema() + " успешно удалена каскадно.");
+
+            if (resultSet.next()) {
+
+                // Схема существует, удаляем ее
+                String deleteSchemeCascade = "DROP SCHEMA IF EXISTS " + config.getDbSchema() + " CASCADE";
+                stmt.executeUpdate(deleteSchemeCascade);
+                System.out.println("Схема " + config.getDbSchema() + " успешно удалена каскадно.");
+
+            } else {
+
+                System.out.println("Схема " + config.getDbSchema() + " отсутствует");
+
+            }
+
         }
     }
 }
