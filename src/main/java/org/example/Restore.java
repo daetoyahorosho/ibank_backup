@@ -33,8 +33,4 @@ public class Restore {
         }
     }
 
-    public static void main(String[] args) {
-        pgRestoreDb();
-    }
-
 }

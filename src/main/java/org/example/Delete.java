@@ -6,16 +6,6 @@ import java.sql.Statement;
 
 public class Delete {
 
-    public static void main(String[] args) {
-        try {
-            deleteSchema();
-        } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     static void deleteSchema() throws SQLException {
 
         //Знаю, что хардкод пути к файлу - исправлю!
