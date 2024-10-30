@@ -46,4 +46,22 @@ class Config {
 
     }
 
+    public String getIbankFolder () {
+
+        return properties.getProperty("ibankFolder");
+
+    }
+
+    public String getBackupIbankFolder () {
+
+        return properties.getProperty("backupIbankFolder");
+
+    }
+
+    public String getDbName () {
+
+        return properties.getProperty("db.name");
+
+    }
+
 }

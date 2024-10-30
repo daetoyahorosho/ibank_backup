@@ -5,8 +5,7 @@ public class Delete {
 
     static void deleteSchema() throws SQLException {
 
-        //Знаю, что хардкод пути к файлу - исправлю!
-        Config config = new Config("C:\\Users\\danil\\IdeaProjects\\ibank_backup\\src\\main\\java\\org\\example\\config.properties");
+        Config config = new Config("src/main/resources/config.properties");
 
         try (Connection conn = DriverManager.getConnection(config.getDbUrl(), config.getDbUser(), config.getDbPassword()); Statement stmt = conn.createStatement()) {
 
