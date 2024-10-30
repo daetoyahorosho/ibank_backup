@@ -9,7 +9,7 @@ public class Restore {
         //Знаю, что хардкод пути к файлу - исправлю!
         Config config = new Config("C:\\Users\\danil\\IdeaProjects\\ibank_backup\\src\\main\\java\\org\\example\\config.properties");
         // Формируем команду для восстановления
-        String commandPgRestore = "\"" + config.getPathPgRestore() + "\" -U " + config.getDbUser() + " -d ibank2 -1 \"" + config.getDumpFieDb() + "\"";
+        String commandPgRestore = "\"" + config.getPathPgRestore() + "\" -U " + config.getDbUser() + " -d ibank2 -1 \"" + config.getDumpFileDb() + "\"";
 
         // Настраиваем ProcessBuilder для выполнения команды
         ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", commandPgRestore);

@@ -40,9 +40,9 @@ class Config {
 
     }
 
-    public String getDumpFieDb () {
+    public String getDumpFileDb () {
 
-        return properties.getProperty("dumpFieDb");
+        return properties.getProperty("dumpFileDb");
 
     }
 
