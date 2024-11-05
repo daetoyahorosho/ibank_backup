@@ -17,7 +17,6 @@ class Config {
     }
 
 
-    //Геттеры
     public String getDbUrl() {
         return properties.getProperty("db.url");
     }
@@ -34,34 +33,23 @@ class Config {
         return properties.getProperty("db.schema");
     }
 
-    public String getPathPgRestore () {
-
+    public String getPathPgRestore() {
         return properties.getProperty("pathPgRestore");
-
     }
 
-    public String getDumpFileDb () {
-
+    public String getDumpFileDb() {
         return properties.getProperty("dumpFileDb");
-
     }
 
-    public String getIbankFolder () {
-
+    public String getIbankFolder() {
         return properties.getProperty("ibankFolder");
-
     }
 
-    public String getBackupIbankFolder () {
-
+    public String getBackupIbankFolder() {
         return properties.getProperty("backupIbankFolder");
-
     }
 
-    public String getDbName () {
-
+    public String getDbName() {
         return properties.getProperty("db.name");
-
     }
-
 }

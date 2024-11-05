@@ -21,7 +21,6 @@ public class Start {
             String userInput = scanner.nextLine();
 
             if (userInput.equalsIgnoreCase("Yes")) {
-
                 // Удаление схемы БД PostgreSQL
                 try {
                     Delete delete = new Delete();
@@ -34,10 +33,8 @@ public class Start {
 
                 // Восстанавливаем БД из файла с помощью pg_restore
                 try {
-
                     Restore restore = new Restore();
                     restore.pgRestoreDb();
-
                 } catch (RuntimeException e) {
                     System.err.println("Ошибка восстановления базы данных: " + e.getMessage());
                     e.printStackTrace();
@@ -45,7 +42,6 @@ public class Start {
 
                 // Удаляем папку с сервером ibank
                 try {
-
                     FolderTransfer deleteFolderIbank = new FolderTransfer();
                     deleteFolderIbank.deleteFolder(Path.of(config.getIbankFolder()));
 
@@ -56,7 +52,6 @@ public class Start {
 
                 // Копируем папку из бэкапа на место удаленной папки
                 try {
-
                     FolderTransfer copyFolderIbank = new FolderTransfer();
                     copyFolderIbank.copyFolder(Path.of(config.getBackupIbankFolder()), Path.of(config.getIbankFolder()));
 
@@ -64,20 +59,10 @@ public class Start {
                     System.err.println("Ошибка при копировании папки: " + e.getMessage());
                     e.printStackTrace();
                 }
-
-
             } else {
-
                 System.out.println("До новых встреч!");
-
             }
-
-
         }
-
-        // Конец работы программы
-
-
     }
 
 }

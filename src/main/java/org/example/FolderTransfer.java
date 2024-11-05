@@ -38,7 +38,6 @@ public class FolderTransfer {
             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(folderIbank);
             for (Path path : directoryStream) {
                 if (Files.isDirectory(path)) {
-
                     // Если это директория, вызываем deleteFolder рекурсивно
                     deleteFolder(path);
                 }
@@ -77,15 +76,12 @@ public class FolderTransfer {
                             System.err.println("Ошибка при копировании файла " + sourcePath + ": " + e.getMessage());
                         }
                     });
-
             System.out.println("Папка " + source + " успешно скопирована в " + target + ".");
         } catch (IOException e) {
             System.err.println("Ошибка при копировании папки: " + e.getMessage());
         }
 
     }
-
-
 }
 
 

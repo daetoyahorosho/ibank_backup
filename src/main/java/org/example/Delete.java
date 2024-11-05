@@ -18,16 +18,12 @@ public class Delete {
 
 
             if (resultSet.next()) {
-
                 // Схема существует, удаляем ее
                 String deleteSchemeCascade = "DROP SCHEMA IF EXISTS " + config.getDbSchema() + " CASCADE";
                 stmt.executeUpdate(deleteSchemeCascade);
                 System.out.println("Схема " + config.getDbSchema() + " успешно удалена каскадно.");
-
             } else {
-
                 System.out.println("Схема " + config.getDbSchema() + " отсутствует");
-
             }
 
         }
