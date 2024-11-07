@@ -4,9 +4,12 @@ import java.io.IOException;
 
 public class Restore {
 
+    private Restore () {
+    }
+
     public static void pgRestoreDb() {
 
-        Config config = new Config("classes/config.properties");
+        Config config = Config.getInstance("src/main/resources/config.properties");
 
         // Настраиваем ProcessBuilder для выполнения команды
         ProcessBuilder processBuilder = new ProcessBuilder(config.getPathPgRestore(),
@@ -32,4 +35,9 @@ public class Restore {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        pgRestoreDb();
+    }
+
 }

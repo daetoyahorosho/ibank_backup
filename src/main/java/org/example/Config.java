@@ -6,14 +6,22 @@ import java.util.Properties;
 
 class Config {
 
+    private static Config instance;
     private Properties properties = new Properties();
 
-    public Config(String filePath) {
+    private Config(String filePath) {
         try (FileInputStream inputStream = new FileInputStream(filePath)) {
             properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Config getInstance(String filePath) {
+        if (instance == null) {
+            instance = new Config(filePath);
+        }
+        return instance;
     }
 
 
