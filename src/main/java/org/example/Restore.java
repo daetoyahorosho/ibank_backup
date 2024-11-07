@@ -9,7 +9,7 @@ public class Restore {
 
     public static void pgRestoreDb() {
 
-        Config config = Config.getInstance("src/main/resources/config.properties");
+        Config config = Config.getInstance(null);
 
         // Настраиваем ProcessBuilder для выполнения команды
         ProcessBuilder processBuilder = new ProcessBuilder(config.getPathPgRestore(),
@@ -35,9 +35,4 @@ public class Restore {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        pgRestoreDb();
-    }
-
 }

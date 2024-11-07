@@ -10,7 +10,7 @@ public class Delete {
 
     static void deleteSchema() throws SQLException {
 
-        Config config = Config.getInstance("src/main/resources/config.properties");
+        Config config = Config.getInstance(null);
 
         try (Connection conn = DriverManager.getConnection(config.getDbUrl(), config.getDbUser(), config.getDbPassword());
              Statement stmt = conn.createStatement()) {
