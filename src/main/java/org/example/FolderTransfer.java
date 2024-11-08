@@ -18,14 +18,12 @@ public class FolderTransfer {
 
     public static void systemMessage() {
 
-        Config config = Config.getInstance(null);
-
         // Вывод информации о работе, а также о расположении сервера и бэкапа
         System.out.println(MESSAGE_WARNING);
         System.out.println(SKIP_LINE);
-        System.out.println(FIRST_QUESTIONS + config.getIbankFolder());
+        System.out.println(FIRST_QUESTIONS + Config.getInstance().getIbankFolder());
         System.out.println(SKIP_LINE);
-        System.out.println(SECOND_QUESTIONS + config.getBackupIbankFolder());
+        System.out.println(SECOND_QUESTIONS + Config.getInstance().getBackupIbankFolder());
         System.out.println(SKIP_LINE);
         System.out.println(MESSAGE_TO_CONTINUE);
 

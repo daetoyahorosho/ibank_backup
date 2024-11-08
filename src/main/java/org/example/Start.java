@@ -8,9 +8,6 @@ public class Start {
 
     public static void main(String[] args) {
 
-        // Создание экземпляра класса Config для чтения переменных
-        Config config = Config.getInstance("src/main/resources/config.properties");
-
         //Начало работы программы
         try (Scanner scanner = new Scanner(System.in)) {
 
@@ -39,7 +36,7 @@ public class Start {
 
                 // Удаляем папку с сервером ibank
                 try {
-                    FolderTransfer.deleteFolder(Path.of(config.getIbankFolder()));
+                    FolderTransfer.deleteFolder(Path.of(Config.getInstance().getIbankFolder()));
                 } catch (RuntimeException e) {
                     System.err.println("Ошибка при удалении папки ibank: " + e.getMessage());
                     e.printStackTrace();
@@ -47,7 +44,7 @@ public class Start {
 
                 // Копируем папку из бэкапа на место удаленной папки
                 try {
-                    FolderTransfer.copyFolder(Path.of(config.getBackupIbankFolder()), Path.of(config.getIbankFolder()));
+                    FolderTransfer.copyFolder(Path.of(Config.getInstance().getBackupIbankFolder()), Path.of(Config.getInstance().getIbankFolder()));
                 } catch (RuntimeException e) {
                     System.err.println("Ошибка при копировании папки: " + e.getMessage());
                     e.printStackTrace();

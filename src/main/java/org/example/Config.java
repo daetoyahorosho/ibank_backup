@@ -7,8 +7,15 @@ import java.util.Properties;
 class Config {
 
     private static Config instance;
+    private static String filePath = "src/main/resources/config.properties";
     private Properties properties = new Properties();
 
+    // Статический блок инициализации - выполняется при загрузке класса
+    static {
+        instance = new Config(filePath);
+    }
+
+    // Приватный конструктор, инициализирующий конфигурацию
     private Config(String filePath) {
         try (FileInputStream inputStream = new FileInputStream(filePath)) {
             properties.load(inputStream);
@@ -17,10 +24,8 @@ class Config {
         }
     }
 
-    public static Config getInstance(String filePath) {
-        if (instance == null) {
-            instance = new Config(filePath);
-        }
+    // Метод для получения инициализированного класса
+    public static Config getInstance() {
         return instance;
     }
 

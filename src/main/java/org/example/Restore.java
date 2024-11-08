@@ -9,17 +9,15 @@ public class Restore {
 
     public static void pgRestoreDb() {
 
-        Config config = Config.getInstance(null);
-
         // Настраиваем ProcessBuilder для выполнения команды
-        ProcessBuilder processBuilder = new ProcessBuilder(config.getPathPgRestore(),
-                "-U", config.getDbUser(),
-                "-d", config.getDbName(),
+        ProcessBuilder processBuilder = new ProcessBuilder(Config.getInstance().getPathPgRestore(),
+                "-U", Config.getInstance().getDbUser(),
+                "-d", Config.getInstance().getDbName(),
                 "-1",
-                config.getDumpFileDb());
+                Config.getInstance().getDumpFileDb());
 
         // Устанавливаем переменную окружения для пароля
-        processBuilder.environment().put("PGPASSWORD", config.getDbPassword());
+        processBuilder.environment().put("PGPASSWORD", Config.getInstance().getDbPassword());
 
         try {
             // Запускаем процесс
