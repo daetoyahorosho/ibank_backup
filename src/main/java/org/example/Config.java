@@ -16,7 +16,7 @@ class Config {
 
     /**
      * Конструктор
-     * @param filePath - путь ку настройкам
+     * @param filePath - путь к настройкам
      */
     private Config(String filePath) {
         try (FileInputStream inputStream = new FileInputStream(filePath)) {
@@ -27,7 +27,7 @@ class Config {
     }
 
     /**
-     * Метод для получения инициализированного класа
+     * Метод для получения инициализированного класса
      * @return инстанс
      */
     public static Config getInstance() {

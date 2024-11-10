@@ -36,7 +36,7 @@ public class FolderTransfer {
 
     /**
      * Метод для удаления папки с вложенными в нее файлами
-     * @param folderIbank
+     * @param folderIbank - путь к папке с сервером ibank
      */
     public static void deleteFolder(Path folderIbank) {
 

@@ -3,24 +3,22 @@ package org.example;
 import java.sql.*;
 import java.text.MessageFormat;
 
-public class Delete {
+public class PostgresSchemaDeleter implements SchemaDeleter{
 
     private static String CHECK_SCHEMA_QUERY = "SELECT schema_name FROM information_schema.schemata WHERE schema_name = ''{0}''";
     private static String DROP_CHEMA = "DROP SCHEMA IF EXISTS {0} CASCADE";
-
-    private Delete() {
-    }
 
     /**
      * Метод для удаления схемы БД
      * @throws SQLException
      */
-    static void deleteSchema() throws SQLException {
+    @Override
+    public void deleteSchema() throws SQLException {
 
         try (Connection conn = DriverManager.getConnection(Config.getInstance().getDbUrl(), Config.getInstance().getDbUser(), Config.getInstance().getDbPassword());
              Statement stmt = conn.createStatement()) {
 
-            System.out.println("Подключение установлено!");
+            System.out.println("Подключение к PostgreSQL установлено!");
 
             String checkSchemaExists = MessageFormat.format(CHECK_SCHEMA_QUERY, Config.getInstance().getDbSchema());
             ResultSet resultSet = stmt.executeQuery(checkSchemaExists);
