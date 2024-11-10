@@ -8,7 +8,6 @@ public class Start {
 
     public static void main(String[] args) {
 
-        //Начало работы программы
         try (Scanner scanner = new Scanner(System.in)) {
 
             // Создание экземпляра класса FolderTransfer и вывод информации пользователю
@@ -26,7 +25,7 @@ public class Start {
                     e.printStackTrace();
                 }
 
-                // Восстанавливаем БД из файла с помощью pg_restore
+                // Восстановление БД из файла с помощью pg_restore
                 try {
                     Restore.pgRestoreDb();
                 } catch (RuntimeException e) {
@@ -34,7 +33,7 @@ public class Start {
                     e.printStackTrace();
                 }
 
-                // Удаляем папку с сервером ibank
+                // Удаление папки с сервером ibank
                 try {
                     FolderTransfer.deleteFolder(Path.of(Config.getInstance().getIbankFolder()));
                 } catch (RuntimeException e) {
@@ -42,7 +41,7 @@ public class Start {
                     e.printStackTrace();
                 }
 
-                // Копируем папку из бэкапа на место удаленной папки
+                // Копирование папки из бэкапа на место удаленной папки
                 try {
                     FolderTransfer.copyFolder(Path.of(Config.getInstance().getBackupIbankFolder()), Path.of(Config.getInstance().getIbankFolder()));
                 } catch (RuntimeException e) {

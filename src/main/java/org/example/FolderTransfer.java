@@ -16,9 +16,11 @@ public class FolderTransfer {
     private static final String MESSAGE_TO_CONTINUE = "Вы хотите продолжить? (yes/no): ";
     private static final String SKIP_LINE = "*********************************************************************************************";
 
+    /**
+     * Метод для вывода информационных сообщений при старте работы программы
+     */
     public static void systemMessage() {
 
-        // Вывод информации о работе, а также о расположении сервера и бэкапа
         System.out.println(MESSAGE_WARNING);
         System.out.println(SKIP_LINE);
         System.out.println(FIRST_QUESTIONS + Config.getInstance().getIbankFolder());
@@ -29,25 +31,23 @@ public class FolderTransfer {
 
     }
 
-    // Конструктор
     private FolderTransfer () {
-
     }
 
+    /**
+     * Метод для удаления папки с вложенными в нее файлами
+     * @param folderIbank
+     */
     public static void deleteFolder(Path folderIbank) {
 
         try {
-            // Получаем список всех файлов и подкаталогов в указанной директории
             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(folderIbank);
             for (Path path : directoryStream) {
                 if (Files.isDirectory(path)) {
-                    // Если это директория, вызываем deleteFolder рекурсивно
                     deleteFolder(path);
                 }
-                // Удаляем файл или пустую директорию
                 Files.deleteIfExists(path);
             }
-            // Удаляем саму директорию после удаления её содержимого
             Files.deleteIfExists(folderIbank);
             System.out.println("Папка " + folderIbank + " и её содержимое успешно удалены.");
         } catch (IOException e) {
@@ -55,24 +55,25 @@ public class FolderTransfer {
         }
     }
 
+    /**
+     * Метод для копирования папки c дальнейшим перемещением
+     * @param source
+     * @param target
+     */
     public static void copyFolder(Path source, Path target) {
 
         try {
-            // Создаем папку назначения, если она не существует
             if (!Files.exists(target)) {
                 Files.createDirectories(target);
             }
 
-            // Копируем содержимое директории
             Files.walk(source)
                     .forEach(sourcePath -> {
                         Path targetPath = target.resolve(source.relativize(sourcePath));
                         try {
                             if (Files.isDirectory(sourcePath)) {
-                                // Создаем директорию
                                 Files.createDirectories(targetPath);
                             } else {
-                                // Копируем файл
                                 Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
                             }
                         } catch (IOException e) {
@@ -83,7 +84,6 @@ public class FolderTransfer {
         } catch (IOException e) {
             System.err.println("Ошибка при копировании папки: " + e.getMessage());
         }
-
     }
 }
 

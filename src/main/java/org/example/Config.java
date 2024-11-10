@@ -10,12 +10,14 @@ class Config {
     private static String filePath = "src/main/resources/config.properties";
     private Properties properties = new Properties();
 
-    // Статический блок инициализации - выполняется при загрузке класса
     static {
         instance = new Config(filePath);
     }
 
-    // Приватный конструктор, инициализирующий конфигурацию
+    /**
+     * Конструктор
+     * @param filePath - путь ку настройкам
+     */
     private Config(String filePath) {
         try (FileInputStream inputStream = new FileInputStream(filePath)) {
             properties.load(inputStream);
@@ -24,7 +26,10 @@ class Config {
         }
     }
 
-    // Метод для получения инициализированного класса
+    /**
+     * Метод для получения инициализированного класа
+     * @return инстанс
+     */
     public static Config getInstance() {
         return instance;
     }
