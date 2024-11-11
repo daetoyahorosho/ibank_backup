@@ -5,8 +5,8 @@ import java.text.MessageFormat;
 
 public class Delete {
 
-    private static String CHECK_SCHEMA_QUERY = "SELECT schema_name FROM information_schema.schemata WHERE schema_name = ''{0}''";
-    private static String DROP_CHEMA = "DROP SCHEMA IF EXISTS {0} CASCADE";
+    private static final String CHECK_SCHEMA_QUERY = "SELECT schema_name FROM information_schema.schemata WHERE schema_name = ''{0}''";
+    private static final String DROP_CHEMA = "DROP SCHEMA IF EXISTS {0} CASCADE";
 
     private Delete() {
     }
